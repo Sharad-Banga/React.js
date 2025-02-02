@@ -1,18 +1,24 @@
 import { useEffect ,useState} from "react";
 
-export const usePost =()=>{
+// we can only use hooks in custom hooks
 
-  const [post,setPost] = useState({});
+export function useFetch(url){
 
-  async function getPosts(){
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
-    const json = await response.json();
-    setPost(json);
+  const [finalData,setFinalData] = useState(null);
+
+  async function getDetails(){
+    const res = await fetch(url);
+    
+    const json = await res.json();
+
+      setFinalData(json);
+  }
+  useEffect(()=>{
+    getDetails();
+  },[url])
+
+  return{
+    finalData
   }
 
-  useEffect(()=>{
-      getPosts();
-  },[])
-
-  return post;
 }

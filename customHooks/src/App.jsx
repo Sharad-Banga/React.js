@@ -1,13 +1,13 @@
 
 import './App.css'
-import {usePost} from "./useFetch";
+import {useFetch} from "./useFetch";
  
 function App() {
   
-  const po = usePost();
+  const {finalData} = useFetch("https://jsonplaceholder.typicode.com/posts/2");
   return (
-     <>
-        {po};
+     <> 
+        { JSON.stringify(finalData)};
     </>
   )
 }
