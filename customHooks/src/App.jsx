@@ -1,27 +1,13 @@
-import { useState } from 'react'
+
 import './App.css'
-
-function useCounter(){
-  const [count, setCount] = useState(0);
-
-  function incCount(){
-    setCount(c => c+1);
-  }
-
-  return {
-    count : count,
-    incCount : incCount
-  }
-}
+import {usePost} from "./useFetch";
  
 function App() {
   
-  const {count , incCount} = useCounter(0);
+  const post = usePost();
   return (
-    <>
-        hi there {count}
-        <br />
-        <button onClick={incCount}>inc</button>
+     <>
+        {post};
     </>
   )
 }
