@@ -4,10 +4,10 @@ import {usePost} from "./useFetch";
  
 function App() {
   
-  const post = usePost();
+  const po = usePost();
   return (
      <>
-        {post};
+        {po};
     </>
   )
 }

@@ -14,5 +14,5 @@ export const usePost =()=>{
       getPosts();
   },[])
 
-  return post.title;
+  return post;
 }
