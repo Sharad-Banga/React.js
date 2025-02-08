@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil'
-import { networkAtom ,jobsAtom , notificationAtom , messagingAtom} from './assets/atoms'
+import { networkAtom ,jobsAtom , notificationAtom , messagingAtom ,totalNotificationSelector} from './assets/atoms' 
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -26,10 +26,12 @@ function MainApp(){
   const notificationAtomsCount = useRecoilValue(notificationAtom);
   const [messagingAtomsCount,setMessagingAtomsCount] = useRecoilState(messagingAtom);
 
+  const tt = useRecoilValue(totalNotificationSelector);
 
-  const tt = useMemo(()=>{
-    return networkAtomsCount+jobsAtomsCount+notificationAtomsCount+messagingAtomsCount;
-  },[networkAtomsCount,jobsAtomsCount,notificationAtomsCount,messagingAtomsCount])
+
+  // const tt = useMemo(()=>{
+  //   return networkAtomsCount+jobsAtomsCount+notificationAtomsCount+messagingAtomsCount;
+  // },[networkAtomsCount,jobsAtomsCount,notificationAtomsCount,messagingAtomsCount])
 
   return (
     <>
