@@ -1,6 +1,6 @@
 
 import './App.css'
-import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil'
 import { notifications, totalNotificationSelector } from './atoms'
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -15,13 +15,16 @@ function MainApp() {
   const [networkCount, setNetworkCount] = useRecoilState(notifications)
   const totalNotificationCount = useRecoilValue(totalNotificationSelector);
 
-  useEffect(() => {
-    // fetch
-    axios.get("https://sum-server.100xdevs.com/notifications")
-      .then(res => {
-        setNetworkCount(res.data)
-      })
-  }, [])
+  // useEffect(() => {
+  //   axios.get("https://sum-server.100xdevs.com/notifications")
+  //     .then(res => {
+  //       setNetworkCount(res.data)
+  //     })
+  // }, [])
+
+  //this will first get values from api then change the values of the network count
+  // we can directly add this async fxn in atom 
+  // no need to first set default values of atom and then changes them using recoil state
 
   return (
     <>
