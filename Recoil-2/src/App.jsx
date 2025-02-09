@@ -1,6 +1,4 @@
-import { useMemo, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil'
 import { networkAtom ,jobsAtom , notificationAtom , messagingAtom ,totalNotificationSelector} from './assets/atoms' 
