@@ -1,12 +1,36 @@
 
-import { useState } from 'react'
+import {  useRef, useState } from 'react'
 import './App.css'
+//@ts-ignore
 
 function App() {
+//@ts-ignore
+const inputRef = useRef<HTMLInputElement>();
 
-  const [arr , addArr]  = useState([]);
+  const [arr , setArr]  = useState<string[]>([]);
 
   function handleAdd(){
+
+
+
+    if(inputRef.current.value==""){
+      console.log("sssss");
+      
+    }
+    
+    else if (inputRef.current) {
+      setArr([...arr, inputRef.current.value]);
+    }
+    console.log(arr);
+    inputRef.current.value = "";
+    
+  }
+
+  function deletehandle(x:number){
+
+    const newArr = [...arr];
+    newArr.splice(x,1);
+    setArr(newArr);
     
   }
 
@@ -22,7 +46,7 @@ function App() {
       <div className='h-[100px] bg-black text-red-500 flex items-center justify-evenly'>
 
         <div className='w-[10%] text-black'>
-          <input className='bg-red-50  h-[50px] w-[250px] font-semibold p-3'  type="text" />
+          <input ref={inputRef} className='bg-red-50  h-[50px] w-[250px] font-semibold p-3'  type="text" />
         </div>
 
         <div className='flex justify-between w-[10%]'>
@@ -35,9 +59,15 @@ function App() {
 
 
 
-      <div className='bg-green-400 h-screen'>
+      <div className='bg-green-400 text-black h-screen'>
 
+          {arr.map((a:string,index:number)=>(
 
+              <div>
+                <li key={index}> {a}  <button onClick={()=>deletehandle(index)} className='bg-red-700 p-1 rounded-sm'>delete</button></li>
+                <br />
+              </div>
+          ))}
 
       </div>
 
